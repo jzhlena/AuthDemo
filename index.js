@@ -5,6 +5,9 @@ const User = require('./models/user');
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 
+mongoose.connect('mongodb://localhost:27017/auth-demo', {
+});
+
 app.get('/register', (req, res)=>{
     res.render('register');
 })
