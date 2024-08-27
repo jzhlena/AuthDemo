@@ -30,8 +30,13 @@ app.get('/register', (req, res) => {
 app.post('/register', async (req, res) => {
     const { password, username } = req.body;
     const hash = await bcrypt.hash(password, 12)
+    const user = new User({
+        username, 
+        password: hash
+    })
+    await user.save();
     res.send(hash);
-    console.log(hash);
+    res.redirect()
 })
 
 app.get('/secret', (req, res) => {
